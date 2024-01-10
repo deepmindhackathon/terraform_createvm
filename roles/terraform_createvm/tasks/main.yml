@@ -1,0 +1,13 @@
+---
+- name: Apply Terraform changes
+  ansible.builtin.command:
+    cmd: terraform apply --auto-approve
+    chdir: /home/ansible/terraform/
+  when: action == 'create'
+
+- name: Destroy Terraform resources
+  ansible.builtin.command:
+    cmd: terraform destroy --auto-approve
+    chdir: /home/ansible/terraform/
+  when: action == 'destroy'
+
