@@ -1,19 +1,13 @@
 ---
 - name: Apply Terraform changes
   ansible.builtin.command:
-    cmd: terraform apply --auto-approve
+    cmd: export AWS_ACCESS_KEY_ID="AKIAVVMAN4OJLTOQZNU2" && export AWS_SECRET_ACCESS_KEY="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" && terraform apply --auto-approve
     chdir: /home/ansible/terraform/
-    environment:
-      AWS_ACCESS_KEY_ID: "AKIAVVMAN4OJLTOQZNU2"
-      AWS_SECRET_ACCESS_KEY: "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"
   when: action == 'create'
 
 - name: Destroy Terraform resources
-  ansible.builtin.command:
-    cmd: terraform destroy --auto-approve
+  ansible.builtin.command:    
+    cmd: export AWS_ACCESS_KEY_ID="AKIAVVMAN4OJLTOQZNU2" && export AWS_SECRET_ACCESS_KEY="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" && terraform destroy --auto-approve
     chdir: /home/ansible/terraform/
-    environment:
-      AWS_ACCESS_KEY_ID: "AKIAVVMAN4OJLTOQZNU2"
-      AWS_SECRET_ACCESS_KEY: "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"
   when: action == 'destroy'
 
